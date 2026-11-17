@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f8f5ef">
+    <meta name="description" content="Baby Oku – liebevoll ausgewählte Baby-Basics aus natürlichen Materialien. Entdecke kleine Lieblingsstücke für die ersten großen Abenteuer.">
+    <title>Baby Oku — Geborgen von Anfang an</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <div class="announcement">Ein guter Start ins Leben — <strong>kostenloser Versand ab 50 €</strong></div>
+    <header class="site-header">
+      <a class="brand" href="#" aria-label="Baby Oku Startseite">
+        <span class="brand-mark" aria-hidden="true">o</span>
+        <span>baby oku<span class="brand-dot">.</span><small>kleines glück, ganz groß</small></span>
+      </a>
+      <nav class="main-nav" aria-label="Hauptnavigation">
+        <a href="#shop">Shop</a>
+        <a href="#geschichte">Unsere Geschichte</a>
+        <a href="#versprechen">Unser Versprechen</a>
+      </nav>
+      <a class="cart-link" href="#shop" aria-label="Warenkorb, 0 Artikel">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.2 11.1a2 2 0 0 0 2 1.6h8.5a2 2 0 0 0 1.9-1.4L21 8H6M10 21a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm7 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"/></svg>
+        <span class="cart-count">0</span>
+      </a>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <span class="eyebrow"><span class="eyebrow-line"></span> MIT LIEBE AUSGESUCHT</span>
+          <h1 id="hero-title">Für die ersten großen <em>kleinen</em> Abenteuer.</h1>
+          <p>Sanfte Lieblingsstücke, die sich genauso gut anfühlen, wie sie aussehen. Natürlich, zeitlos und gemacht für ganz viel Nähe.</p>
+          <a class="button button-dark" href="#shop">Lieblinge entdecken <span aria-hidden="true">↗</span></a>
+          <div class="hero-note">
+            <div class="avatar-stack" aria-hidden="true"><span>♡</span><span>♡</span><span>♡</span></div>
+            <span>Von Familien geliebt <strong>4,9 / 5</strong></span>
+          </div>
+        </div>
+        <div class="hero-art">
+          <img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?auto=format&fit=crop&w=1200&q=85" alt="Neugeborenes Baby schläft friedlich in weicher Decke">
+          <div class="floating-note"><span class="note-sparkle">✳</span><span>Natürlich weich.<br><strong>Von Anfang an.</strong></span></div>
+          <span class="hero-caption">GEBORGENHEIT IN JEDEM DETAIL</span>
+        </div>
+        <span class="hero-decoration" aria-hidden="true">✳</span>
+      </section>
+
+      <section class="promise-strip" id="versprechen" aria-label="Unser Versprechen">
+        <div><span class="promise-icon">✳</span><span><strong>Natürlich gut</strong><small>Sanfte Materialien</small></span></div>
+        <div><span class="promise-icon">♡</span><span><strong>Mit Liebe gemacht</strong><small>Für kleine Menschen</small></span></div>
+        <div><span class="promise-icon">⌂</span><span><strong>Fair & bewusst</strong><small>Gut für morgen</small></span></div>
+      </section>
+
+      <section class="shop-section" id="shop">
+        <div class="section-heading">
+          <div><span class="eyebrow">KLEINE DINGE, GROSSE LIEBE</span><h2>Unsere Lieblinge<span class="brand-dot">.</span></h2></div>
+          <p>Für sanfte Morgen, kleine Entdeckungen<br>und all die Momente dazwischen.</p>
+        </div>
+        <div class="filters" role="group" aria-label="Produkte filtern">
+          <button class="filter-button is-active" type="button" data-filter="alle" aria-pressed="true">Alles ansehen</button>
+          <button class="filter-button" type="button" data-filter="kleidung" aria-pressed="false">Kleidung</button>
+          <button class="filter-button" type="button" data-filter="textilien" aria-pressed="false">Textilien</button>
+          <button class="filter-button" type="button" data-filter="spielzeug" aria-pressed="false">Spielzeug</button>
+        </div>
+        <div class="product-grid">
+          <article class="product-card" data-category="kleidung">
+            <div class="product-image image-rose">
+              <span class="product-tag">Bestseller</span>
+              <img src="https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?auto=format&fit=crop&w=800&q=80" alt="Weicher Baby-Strampler in natürlichem Farbton" loading="lazy">
+              <button class="add-button" type="button" aria-label="Wolkenweich Strampler zum Warenkorb hinzufügen">+</button>
+            </div>
+            <div class="product-info"><div><h3>Wolkenweich Strampler</h3><span>Bio-Baumwolle · Sand</span></div><strong>34,90 €</strong></div>
+          </article>
+          <article class="product-card" data-category="textilien">
+            <div class="product-image image-green">
+              <img src="https://images.unsplash.com/photo-1604917877934-07d8d248d396?auto=format&fit=crop&w=800&q=80" alt="Kuschelige Babydecke für ruhige Nickerchen" loading="lazy">
+              <button class="add-button" type="button" aria-label="Kuschelzeit Decke zum Warenkorb hinzufügen">+</button>
+            </div>
+            <div class="product-info"><div><h3>Kuschelzeit Decke</h3><span>Bio-Baumwolle · Salbei</span></div><strong>39,90 €</strong></div>
+          </article>
+          <article class="product-card" data-category="spielzeug">
+            <div class="product-image image-yellow">
+              <span class="product-tag tag-new">Neu</span>
+              <img src="https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?auto=format&fit=crop&w=800&q=80" alt="Handgemachtes weiches Kuscheltier für Babys" loading="lazy">
+              <button class="add-button" type="button" aria-label="Freund Fips Kuscheltier zum Warenkorb hinzufügen">+</button>
+            </div>
+            <div class="product-info"><div><h3>Freund Fips</h3><span>Handgemacht · Natur</span></div><strong>24,90 €</strong></div>
+          </article>
+          <article class="product-card" data-category="textilien">
+            <div class="product-image image-blue">
+              <img src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=800&q=80" alt="Leichtes Mulltuch in zartem Blauton" loading="lazy">
+              <button class="add-button" type="button" aria-label="Immer dabei Mulltuch zum Warenkorb hinzufügen">+</button>
+            </div>
+            <div class="product-info"><div><h3>Immer dabei Mulltuch</h3><span>2er-Set · Creme & Himmel</span></div><strong>19,90 €</strong></div>
+          </article>
+        </div>
+        <p class="empty-state" hidden>Hier gibt es gerade keine Lieblinge zu sehen.</p>
+      </section>
+
+      <section class="story-section" id="geschichte">
+        <div class="story-image"><img src="https://images.unsplash.com/photo-1492725764893-90b379c2b6e7?auto=format&fit=crop&w=1100&q=85" alt="Eltern verbringen einen liebevollen Moment mit ihrem Baby" loading="lazy"></div>
+        <div class="story-copy">
+          <span class="eyebrow">VON HERZEN FÜR EUCH</span>
+          <h2>Ein bisschen weniger müssen. Ein bisschen mehr <em>kuscheln.</em></h2>
+          <p>Baby Oku ist aus einer einfachen Idee entstanden: Die ersten Jahre sind schon aufregend genug. Die Dinge, die euch begleiten, sollten sich einfach richtig anfühlen.</p>
+          <a href="#versprechen" class="text-link">Was uns wichtig ist <span aria-hidden="true">→</span></a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <a class="brand footer-brand" href="#" aria-label="Baby Oku Startseite"><span class="brand-mark" aria-hidden="true">o</span><span>baby oku<span class="brand-dot">.</span><small>kleines glück, ganz groß</small></span></a>
+      <p>Mit Liebe ausgesucht für kleine Menschen und große Gefühle.</p>
+      <span>© 2025 Baby Oku · Ein Demo-Shop mit Herz</span>
+    </footer>
+    <div class="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>
