@@ -1,0 +1,622 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f1e8">
+  <meta name="description" content="A concept for Baby Oku Germany: creator stories, curated finds, and home-store favourites.">
+  <title>Baby Oku Germany — Stories & Finds</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f6f1e8;
+      --ink: #24211d;
+      --muted: #716a61;
+      --line: #ded5c8;
+      --green: #245c49;
+      --green-dark: #193e32;
+      --orange: #e58b61;
+      --lavender: #d7d1e4;
+      --white: #fffdf9;
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: "Segoe UI", Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font: 16px/1.55 var(--sans);
+    }
+    a { color: inherit; }
+    button { font: inherit; }
+    .wrap { width: min(1160px, calc(100% - 48px)); margin: 0 auto; }
+    .eyebrow {
+      margin: 0 0 14px;
+      color: var(--green);
+      font-size: .73rem;
+      font-weight: 800;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+    .topline {
+      padding: 9px 16px;
+      background: var(--green-dark);
+      color: #fffaf0;
+      text-align: center;
+      font-size: .75rem;
+      letter-spacing: .04em;
+    }
+    header {
+      position: sticky;
+      z-index: 5;
+      top: 0;
+      border-bottom: 1px solid rgba(36, 33, 29, .1);
+      background: rgba(246, 241, 232, .94);
+      backdrop-filter: blur(12px);
+    }
+    .nav {
+      display: flex;
+      min-height: 78px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .brand-mark {
+      display: grid;
+      width: 40px;
+      height: 40px;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--orange);
+      color: var(--ink);
+      font: 700 1rem var(--serif);
+    }
+    .brand-name { font: 700 1.12rem var(--serif); letter-spacing: -.025em; }
+    .brand-name small {
+      display: block;
+      margin-top: -3px;
+      color: var(--muted);
+      font: 700 .58rem var(--sans);
+      letter-spacing: .19em;
+      text-transform: uppercase;
+    }
+    .nav-links { display: flex; align-items: center; gap: 28px; }
+    .nav-links a {
+      color: #514a43;
+      font-size: .84rem;
+      text-decoration: none;
+    }
+    .nav-links a:hover { color: var(--green); }
+    .nav-actions { display: flex; align-items: center; gap: 12px; }
+    .lang {
+      display: inline-flex;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 3px;
+      background: var(--white);
+    }
+    .lang button {
+      min-width: 38px;
+      border: 0;
+      border-radius: 999px;
+      padding: 6px 9px;
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      font-size: .7rem;
+      font-weight: 800;
+    }
+    .lang button[aria-pressed="true"] { background: var(--green); color: white; }
+    .button {
+      display: inline-flex;
+      min-height: 46px;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      border: 1px solid var(--green);
+      border-radius: 3px;
+      padding: 0 19px;
+      background: var(--green);
+      color: white;
+      font-size: .82rem;
+      font-weight: 750;
+      text-decoration: none;
+      transition: background .18s ease, transform .18s ease;
+    }
+    .button:hover { transform: translateY(-2px); background: var(--green-dark); }
+    .button.secondary { background: transparent; color: var(--green); }
+    .button.secondary:hover { background: rgba(36, 92, 73, .08); }
+
+    .hero { padding: 54px 0 76px; }
+    .hero-grid { display: grid; grid-template-columns: 1.03fr .97fr; gap: 54px; align-items: center; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1, h2, h3 { font-family: var(--serif); font-weight: 500; }
+    h1 {
+      max-width: 640px;
+      margin-bottom: 22px;
+      font-size: clamp(3.2rem, 7vw, 6.3rem);
+      letter-spacing: -.065em;
+      line-height: .96;
+    }
+    h1 em { color: var(--green); font-weight: 400; }
+    .hero-copy > p:not(.eyebrow) { max-width: 480px; color: var(--muted); font-size: 1.05rem; }
+    .hero-buttons { display: flex; flex-wrap: wrap; gap: 11px; margin-top: 28px; }
+    .hero-note { display: flex; align-items: center; gap: 11px; margin-top: 32px; color: var(--muted); font-size: .78rem; }
+    .note-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--orange); }
+    .hero-art {
+      position: relative;
+      min-height: 485px;
+      overflow: hidden;
+      border-radius: 48% 48% 4px 4px;
+      background:
+        radial-gradient(ellipse at 68% 28%, rgba(255,255,255,.62) 0 8%, transparent 8.5%),
+        radial-gradient(ellipse at 67% 29%, #e8b99a 0 17%, transparent 17.5%),
+        radial-gradient(ellipse at 56% 65%, #315c49 0 29%, transparent 29.5%),
+        linear-gradient(145deg, #d7d1e4, #ead7c4 48%, #e58b61);
+    }
+    .hero-art::before {
+      position: absolute;
+      top: 33%;
+      left: 24%;
+      width: 44%;
+      height: 74%;
+      border-radius: 48% 48% 0 0;
+      background: linear-gradient(155deg, #f8eadd 0 25%, #c66f4c 25% 51%, #213d33 51%);
+      content: "";
+      transform: rotate(7deg);
+    }
+    .hero-art::after {
+      position: absolute;
+      top: 16%;
+      left: 37%;
+      width: 25%;
+      height: 27%;
+      border-radius: 50% 50% 44% 44%;
+      background: #59382f;
+      box-shadow: inset 12px -4px 0 #e8b99a;
+      content: "";
+      transform: rotate(7deg);
+    }
+    .art-orbit {
+      position: absolute;
+      top: 9%;
+      right: -6%;
+      width: 230px;
+      height: 230px;
+      border: 1px solid rgba(36, 33, 29, .22);
+      border-radius: 50%;
+    }
+    .art-card {
+      position: absolute;
+      z-index: 1;
+      right: 7%;
+      bottom: 8%;
+      max-width: 195px;
+      border: 1px solid rgba(36, 33, 29, .12);
+      padding: 14px 16px;
+      background: var(--white);
+      box-shadow: 0 14px 45px rgba(48, 36, 26, .12);
+      font: 1.08rem/1.15 var(--serif);
+    }
+    .art-card span { display: block; margin-top: 7px; color: var(--muted); font: .67rem var(--sans); }
+
+    .section { padding: 76px 0; }
+    .section-head { display: flex; align-items: end; justify-content: space-between; gap: 32px; margin-bottom: 30px; }
+    .section-head h2 { max-width: 620px; margin-bottom: 0; font-size: clamp(2.35rem, 4.5vw, 4rem); letter-spacing: -.055em; line-height: 1; }
+    .section-head > p { max-width: 310px; margin-bottom: 3px; color: var(--muted); font-size: .9rem; }
+    .finds { background: var(--white); }
+    .filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+    .filter {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 8px 14px;
+      background: transparent;
+      color: #625c53;
+      cursor: pointer;
+      font-size: .76rem;
+      font-weight: 700;
+    }
+    .filter[aria-pressed="true"] { border-color: var(--green); background: var(--green); color: white; }
+    .cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
+    .product { min-width: 0; border: 1px solid #e8e0d6; background: #fff; }
+    .product[hidden] { display: none; }
+    .product-art { position: relative; display: grid; min-height: 220px; overflow: hidden; place-items: center; }
+    .product-art::before, .product-art::after { position: absolute; content: ""; }
+    .product:nth-child(1) .product-art { background: #e8c9b4; }
+    .product:nth-child(1) .product-art::before { width: 92px; height: 156px; border-radius: 50% 50% 8px 8px; background: linear-gradient(90deg, #245c49, #326c53 60%, #1c4938); transform: rotate(8deg); }
+    .product:nth-child(1) .product-art::after { width: 135px; height: 25px; border: 1px solid rgba(255,255,255,.62); border-radius: 50%; transform: rotate(-17deg); }
+    .product:nth-child(2) .product-art { background: #d8d1e1; }
+    .product:nth-child(2) .product-art::before { width: 74px; height: 132px; border-radius: 15px 15px 22px 22px; background: linear-gradient(90deg, #e8ad79, #f1cfab 52%, #d99269); box-shadow: inset 0 0 0 6px rgba(255,255,255,.32); }
+    .product:nth-child(2) .product-art::after { top: 30%; left: 56%; width: 34px; height: 34px; border: 1px solid rgba(255,255,255,.8); border-radius: 50%; }
+    .product:nth-child(3) .product-art { background: #d7e1d7; }
+    .product:nth-child(3) .product-art::before { width: 93px; height: 170px; border: 5px solid #2e3431; border-radius: 19px; background: linear-gradient(145deg, #a5bba8, #e0b08b); box-shadow: inset 0 0 0 2px rgba(255,255,255,.65); transform: rotate(-8deg); }
+    .product:nth-child(3) .product-art::after { width: 12px; height: 12px; border: 2px solid #333; border-radius: 50%; transform: translate(-24px, -67px); }
+    .product:nth-child(4) .product-art { background: #eedcc8; }
+    .product:nth-child(4) .product-art::before { width: 108px; height: 118px; border-radius: 6px 6px 35px 35px; background: linear-gradient(100deg, #d7a47d, #f4e3c9 42%, #c78160); box-shadow: inset 0 -15px 0 rgba(71, 48, 34, .1); }
+    .product:nth-child(4) .product-art::after { width: 36px; height: 20px; margin-top: -128px; border-radius: 3px 3px 0 0; background: #245c49; }
+    .product-label {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      border-radius: 999px;
+      padding: 5px 9px;
+      background: rgba(255, 253, 249, .85);
+      color: var(--green-dark);
+      font-size: .64rem;
+      font-weight: 800;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+    .product-info { padding: 17px 17px 18px; }
+    .product-info h3 { margin-bottom: 7px; font-size: 1.3rem; letter-spacing: -.025em; }
+    .product-info p { min-height: 44px; margin-bottom: 15px; color: var(--muted); font-size: .77rem; }
+    .text-link { color: var(--green); font-size: .76rem; font-weight: 800; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+    .disclosure { margin: 18px 0 0; color: var(--muted); font-size: .7rem; }
+
+    .story { display: grid; grid-template-columns: .9fr 1.1fr; gap: 70px; align-items: center; }
+    .story-art {
+      position: relative;
+      min-height: 400px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 50% 40%, #f6e1ca 0 14%, transparent 14.5%),
+        radial-gradient(ellipse at 50% 85%, #345b49 0 40%, transparent 40.5%),
+        linear-gradient(145deg, #dbd3e4, #e6a17b);
+    }
+    .story-art::before {
+      position: absolute;
+      top: 4%;
+      left: 29%;
+      width: 42%;
+      height: 55%;
+      border-radius: 50% 50% 46% 46%;
+      background: #59382f;
+      box-shadow: inset 22px -8px 0 #ecc19f;
+      content: "";
+    }
+    .story-art::after {
+      position: absolute;
+      top: 52%;
+      left: 12%;
+      width: 76%;
+      height: 90%;
+      border-radius: 50% 50% 0 0;
+      background: linear-gradient(90deg, #244637, #54735a 48%, #244637);
+      content: "";
+    }
+    .story-copy h2 { margin-bottom: 20px; font-size: clamp(2.6rem, 5vw, 4.4rem); letter-spacing: -.055em; line-height: 1; }
+    .story-copy > p:not(.eyebrow) { max-width: 550px; color: var(--muted); }
+    .story-tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 23px 0 26px; }
+    .story-tags span { border: 1px solid var(--line); border-radius: 999px; padding: 7px 12px; color: #5d554c; font-size: .7rem; }
+    .social { background: #e9e3d8; }
+    .social-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 13px; }
+    .social-card {
+      display: flex;
+      min-height: 135px;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 20px;
+      background: var(--paper);
+      text-decoration: none;
+      transition: transform .18s ease;
+    }
+    .social-card:hover { transform: translateY(-3px); }
+    .social-card span { color: var(--muted); font-size: .76rem; }
+    .social-card strong { font: 1.55rem var(--serif); }
+    .contact {
+      padding: 72px 0;
+      background: var(--green-dark);
+      color: #fffaf0;
+      text-align: center;
+    }
+    .contact .eyebrow { color: #f0ad88; }
+    .contact h2 { max-width: 650px; margin: 0 auto 17px; font-size: clamp(2.8rem, 5.3vw, 4.8rem); letter-spacing: -.055em; line-height: 1; }
+    .contact p:not(.eyebrow) { max-width: 500px; margin: 0 auto 26px; color: rgba(255,250,240,.72); }
+    .contact .button { border-color: var(--orange); background: var(--orange); color: var(--ink); }
+    .contact .button:hover { background: #eea47e; }
+    footer { padding: 23px 0; background: #16352b; color: rgba(255,250,240,.72); font-size: .7rem; }
+    .footer-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 15px; }
+    .footer-row a { color: #fffaf0; }
+    .demo-badge {
+      position: fixed;
+      z-index: 10;
+      right: 16px;
+      bottom: 15px;
+      border: 1px solid rgba(36,33,29,.18);
+      border-radius: 999px;
+      padding: 8px 12px;
+      background: var(--white);
+      box-shadow: 0 5px 20px rgba(36,33,29,.1);
+      color: var(--muted);
+      font-size: .67rem;
+      font-weight: 700;
+    }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+    @media (max-width: 850px) {
+      .nav-links { gap: 15px; }
+      .nav-links a { font-size: .75rem; }
+      .nav-actions > .button { display: none; }
+      .hero-grid { gap: 28px; }
+      .hero-art { min-height: 410px; }
+      .cards { grid-template-columns: repeat(2, 1fr); }
+      .story { gap: 36px; }
+    }
+    @media (max-width: 620px) {
+      .wrap { width: min(100% - 32px, 480px); }
+      .topline { font-size: .67rem; }
+      .nav { min-height: 68px; }
+      .brand-mark { width: 35px; height: 35px; }
+      .brand-name { font-size: 1rem; }
+      .nav-links { display: none; }
+      .hero { padding: 42px 0 56px; }
+      .hero-grid, .story { grid-template-columns: 1fr; }
+      .hero-grid { gap: 32px; }
+      .hero-art { min-height: 380px; }
+      .section { padding: 56px 0; }
+      .section-head { display: block; }
+      .section-head > p { margin-top: 14px; }
+      .product-art { min-height: 175px; }
+      .product-info { padding: 13px; }
+      .product-info h3 { font-size: 1.1rem; }
+      .product-info p { min-height: 62px; font-size: .72rem; }
+      .story-art { min-height: 310px; }
+      .social-grid { grid-template-columns: 1fr; }
+      .social-card { min-height: 105px; }
+      .footer-row { align-items: flex-start; flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="topline" data-i18n="topline">A little Germany, a little Naija — and a lot of good finds.</div>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="#" aria-label="Baby Oku Germany home">
+        <span class="brand-mark" aria-hidden="true">B</span>
+        <span class="brand-name">BABY OKU <small>Germany</small></span>
+      </a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#finds" data-i18n="navFinds">The finds</a>
+        <a href="#story" data-i18n="navStory">Her story</a>
+        <a href="#social" data-i18n="navSocial">Social</a>
+      </nav>
+      <div class="nav-actions">
+        <div class="lang" aria-label="Language">
+          <button type="button" data-lang="en" aria-pressed="true">EN</button>
+          <button type="button" data-lang="de" aria-pressed="false">DE</button>
+        </div>
+        <a class="button" href="#finds" data-i18n="navShop">Explore the finds</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow" data-i18n="heroEyebrow">Creator life · Curated finds · Community</p>
+          <h1 data-i18n="heroTitle">Where Germany meets <em>Naija.</em></h1>
+          <p data-i18n="heroText">Stories, style, and everyday favourites from Baby Oku Germany — bringing her online community a little closer to the things she loves.</p>
+          <div class="hero-buttons">
+            <a class="button" href="#finds" data-i18n="heroPrimary">Browse the finds <span aria-hidden="true">→</span></a>
+            <a class="button secondary" href="#story" data-i18n="heroSecondary">Meet Baby Oku</a>
+          </div>
+          <div class="hero-note"><span class="note-dot" aria-hidden="true"></span><span data-i18n="heroNote">A first look at a future Baby Oku Germany marketplace.</span></div>
+        </div>
+        <div class="hero-art" role="img" aria-label="Illustration in warm, editorial colors">
+          <div class="art-orbit" aria-hidden="true"></div>
+          <div class="art-card"><span data-i18n="artCardTitle">Picked with personality</span><span data-i18n="artCardSub">Everyday finds, her way</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section finds" id="finds">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow" data-i18n="findsEyebrow">The Baby Oku edit</p>
+            <h2 data-i18n="findsTitle">Good things, gathered in one place.</h2>
+          </div>
+          <p data-i18n="findsIntro">A home for her own-store favourites and products she shares online. The categories are ready; real products come next.</p>
+        </div>
+        <div class="filters" role="group" aria-label="Filter product categories">
+          <button class="filter" type="button" data-filter="all" aria-pressed="true" data-i18n="filterAll">All finds</button>
+          <button class="filter" type="button" data-filter="fashion" aria-pressed="false" data-i18n="filterFashion">Fashion</button>
+          <button class="filter" type="button" data-filter="beauty" aria-pressed="false" data-i18n="filterBeauty">Beauty & scent</button>
+          <button class="filter" type="button" data-filter="tech" aria-pressed="false" data-i18n="filterTech">Tech</button>
+          <button class="filter" type="button" data-filter="store" aria-pressed="false" data-i18n="filterStore">Home-store picks</button>
+        </div>
+        <div class="cards">
+          <article class="product" data-category="fashion">
+            <div class="product-art"><span class="product-label" data-i18n="labelSocial">Featured online</span></div>
+            <div class="product-info">
+              <h3 data-i18n="fashionTitle">Style & everyday</h3>
+              <p data-i18n="fashionText">Fashion finds and looks featured in her social videos. Exact items and sizes to be confirmed.</p>
+              <a class="text-link" href="https://www.tiktok.com/@baby_oku_germany" target="_blank" rel="noopener noreferrer" data-i18n="viewTikTok">See her TikTok picks ↗</a>
+            </div>
+          </article>
+          <article class="product" data-category="beauty">
+            <div class="product-art"><span class="product-label" data-i18n="labelSocial">Featured online</span></div>
+            <div class="product-info">
+              <h3 data-i18n="beautyTitle">Beauty & fragrance</h3>
+              <p data-i18n="beautyText">Scents and beauty finds she has featured. Brands, sizes, and current availability to be confirmed.</p>
+              <a class="text-link" href="https://www.tiktok.com/@baby_oku_germany" target="_blank" rel="noopener noreferrer" data-i18n="viewTikTok">See her TikTok picks ↗</a>
+            </div>
+          </article>
+          <article class="product" data-category="tech">
+            <div class="product-art"><span class="product-label" data-i18n="labelSocial">Featured online</span></div>
+            <div class="product-info">
+              <h3 data-i18n="techTitle">Tech & smart finds</h3>
+              <p data-i18n="techText">Phones and useful gadgets featured in videos. Product details and seller links to be confirmed.</p>
+              <a class="text-link" href="https://www.tiktok.com/@baby_oku_germany" target="_blank" rel="noopener noreferrer" data-i18n="viewTikTok">See her TikTok picks ↗</a>
+            </div>
+          </article>
+          <article class="product" data-category="store">
+            <div class="product-art"><span class="product-label" data-i18n="labelStore">Home-store collection</span></div>
+            <div class="product-info">
+              <h3 data-i18n="storeTitle">From her home store</h3>
+              <p data-i18n="storeText">A dedicated collection for products she sells directly. We'll add real items, prices, and stock after confirmation.</p>
+              <a class="text-link" href="mailto:adaoragermany@gmail.com?subject=Baby%20Oku%20Germany%20product%20enquiry" data-i18n="askStock">Ask about availability ↗</a>
+            </div>
+          </article>
+        </div>
+        <p class="disclosure" data-i18n="disclosure">Concept preview: sample categories only — no prices, stock, or specific products are being advertised here. Some social product links may be commission-eligible; any affiliate relationship will be clearly disclosed before launch.</p>
+      </div>
+    </section>
+
+    <section class="section" id="story">
+      <div class="wrap story">
+        <div class="story-art" role="img" aria-label="Abstract portrait illustration"></div>
+        <div class="story-copy">
+          <p class="eyebrow" data-i18n="storyEyebrow">The person behind the posts</p>
+          <h2 data-i18n="storyTitle">A voice, a point of view, a community.</h2>
+          <p data-i18n="storyText">Baby Oku Germany brings her own perspective to life between Germany and Nigeria — sharing culture, everyday moments, humour, and the products she chooses to feature.</p>
+          <div class="story-tags">
+            <span data-i18n="tagCulture">Culture & community</span>
+            <span data-i18n="tagLifestyle">Everyday life</span>
+            <span data-i18n="tagFinds">Curated finds</span>
+          </div>
+          <a class="button secondary" href="https://www.facebook.com/Babyokugermany" target="_blank" rel="noopener noreferrer" data-i18n="followFacebook">Follow the story ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section social" id="social">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow" data-i18n="socialEyebrow">Keep up with Baby Oku</p>
+            <h2 data-i18n="socialTitle">The latest is always happening somewhere.</h2>
+          </div>
+          <p data-i18n="socialIntro">Follow her channels for new videos, product features, and conversations with the community.</p>
+        </div>
+        <div class="social-grid">
+          <a class="social-card" href="https://www.tiktok.com/@baby_oku_germany" target="_blank" rel="noopener noreferrer"><span>TikTok</span><strong>@baby_oku_germany ↗</strong></a>
+          <a class="social-card" href="https://www.facebook.com/Babyokugermany" target="_blank" rel="noopener noreferrer"><span>Facebook</span><strong>Baby Oku Germany ↗</strong></a>
+          <a class="social-card" href="https://www.youtube.com/@BabyOkuGermany" target="_blank" rel="noopener noreferrer"><span>YouTube</span><strong>Baby Oku Germany ↗</strong></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="wrap">
+        <p class="eyebrow" data-i18n="contactEyebrow">For the community & brand partners</p>
+        <h2 data-i18n="contactTitle">Let's make something lovely together.</h2>
+        <p data-i18n="contactText">For product questions, collaborations, or business enquiries, get in touch directly.</p>
+        <a class="button" href="mailto:adaoragermany@gmail.com?subject=Baby%20Oku%20Germany%20enquiry">adaoragermany@gmail.com</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-row">
+      <span>© <span id="year"></span> Baby Oku Germany · <span data-i18n="footerLine">A concept preview, made with care.</span></span>
+      <a href="#finds" data-i18n="backTop">Back to the finds ↑</a>
+    </div>
+  </footer>
+  <div class="demo-badge" data-i18n="demoBadge">CONCEPT PREVIEW · NOT FOR ORDERS</div>
+
+  <script>
+    const copy = {
+      en: {
+        topline: "A little Germany, a little Naija — and a lot of good finds.",
+        navFinds: "The finds", navStory: "Her story", navSocial: "Social", navShop: "Explore the finds",
+        heroEyebrow: "Creator life · Curated finds · Community",
+        heroTitle: "Where Germany meets <em>Naija.</em>",
+        heroText: "Stories, style, and everyday favourites from Baby Oku Germany — bringing her online community a little closer to the things she loves.",
+        heroPrimary: "Browse the finds", heroSecondary: "Meet Baby Oku",
+        heroNote: "A first look at a future Baby Oku Germany marketplace.",
+        artCardTitle: "Picked with personality", artCardSub: "Everyday finds, her way",
+        findsEyebrow: "The Baby Oku edit", findsTitle: "Good things, gathered in one place.",
+        findsIntro: "A home for her own-store favourites and products she shares online. The categories are ready; real products come next.",
+        filterAll: "All finds", filterFashion: "Fashion", filterBeauty: "Beauty & scent", filterTech: "Tech", filterStore: "Home-store picks",
+        labelSocial: "Featured online", labelStore: "Home-store collection",
+        fashionTitle: "Style & everyday", fashionText: "Fashion finds and looks featured in her social videos. Exact items and sizes to be confirmed.",
+        beautyTitle: "Beauty & fragrance", beautyText: "Scents and beauty finds she has featured. Brands, sizes, and current availability to be confirmed.",
+        techTitle: "Tech & smart finds", techText: "Phones and useful gadgets featured in videos. Product details and seller links to be confirmed.",
+        storeTitle: "From her home store", storeText: "A dedicated collection for products she sells directly. We'll add real items, prices, and stock after confirmation.",
+        viewTikTok: "See her TikTok picks ↗", askStock: "Ask about availability ↗",
+        disclosure: "Concept preview: sample categories only — no prices, stock, or specific products are being advertised here. Some social product links may be commission-eligible; any affiliate relationship will be clearly disclosed before launch.",
+        storyEyebrow: "The person behind the posts", storyTitle: "A voice, a point of view, a community.",
+        storyText: "Baby Oku Germany brings her own perspective to life between Germany and Nigeria — sharing culture, everyday moments, humour, and the products she chooses to feature.",
+        tagCulture: "Culture & community", tagLifestyle: "Everyday life", tagFinds: "Curated finds", followFacebook: "Follow the story ↗",
+        socialEyebrow: "Keep up with Baby Oku", socialTitle: "The latest is always happening somewhere.",
+        socialIntro: "Follow her channels for new videos, product features, and conversations with the community.",
+        contactEyebrow: "For the community & brand partners", contactTitle: "Let's make something lovely together.",
+        contactText: "For product questions, collaborations, or business enquiries, get in touch directly.",
+        footerLine: "A concept preview, made with care.", backTop: "Back to the finds ↑", demoBadge: "CONCEPT PREVIEW · NOT FOR ORDERS"
+      },
+      de: {
+        topline: "Ein bisschen Deutschland, ein bisschen Naija — und viele schöne Fundstücke.",
+        navFinds: "Fundstücke", navStory: "Ihre Geschichte", navSocial: "Social Media", navShop: "Fundstücke entdecken",
+        heroEyebrow: "Creator-Alltag · Ausgewählte Fundstücke · Community",
+        heroTitle: "Wo Deutschland auf <em>Naija</em> trifft.",
+        heroText: "Geschichten, Stil und Lieblingsstücke aus dem Alltag von Baby Oku Germany — für ihre Community und alle Dinge, die sie gern teilt.",
+        heroPrimary: "Fundstücke ansehen", heroSecondary: "Baby Oku kennenlernen",
+        heroNote: "Ein erster Entwurf für den zukünftigen Baby-Oku-Germany-Marktplatz.",
+        artCardTitle: "Mit Persönlichkeit ausgewählt", artCardSub: "Fundstücke aus ihrem Alltag",
+        findsEyebrow: "Die Baby-Oku-Auswahl", findsTitle: "Schöne Dinge, an einem Ort.",
+        findsIntro: "Ein Zuhause für Favoriten aus ihrem eigenen Shop und Produkte, die sie online vorstellt. Die Kategorien stehen — echte Produkte folgen.",
+        filterAll: "Alle Fundstücke", filterFashion: "Mode", filterBeauty: "Beauty & Düfte", filterTech: "Technik", filterStore: "Aus dem eigenen Shop",
+        labelSocial: "Online vorgestellt", labelStore: "Kollektion aus dem Shop",
+        fashionTitle: "Stil & Alltag", fashionText: "Mode und Looks aus ihren Social-Media-Videos. Artikel und Größen müssen noch bestätigt werden.",
+        beautyTitle: "Beauty & Düfte", beautyText: "Düfte und Beauty-Fundstücke aus ihren Videos. Marken, Größen und Verfügbarkeit müssen noch bestätigt werden.",
+        techTitle: "Technik & praktische Fundstücke", techText: "Smartphones und praktische Gadgets aus ihren Videos. Produktdetails und Händlerlinks müssen noch bestätigt werden.",
+        storeTitle: "Aus ihrem eigenen Shop", storeText: "Eine eigene Kollektion für direkt verkaufte Produkte. Echte Artikel, Preise und Bestand ergänzen wir nach Bestätigung.",
+        viewTikTok: "Ihre TikTok-Auswahl ansehen ↗", askStock: "Verfügbarkeit anfragen ↗",
+        disclosure: "Konzeptvorschau: nur Beispielkategorien — hier werden keine Preise, Bestände oder konkreten Produkte beworben. Manche Social-Produktlinks können provisionsberechtigt sein; eine mögliche Affiliate-Beziehung wird vor dem Start klar gekennzeichnet.",
+        storyEyebrow: "Die Person hinter den Beiträgen", storyTitle: "Eine Stimme, eine Perspektive, eine Community.",
+        storyText: "Baby Oku Germany teilt ihre eigene Perspektive auf das Leben zwischen Deutschland und Nigeria — mit Kultur, Alltagsmomenten, Humor und ausgewählten Produkten.",
+        tagCulture: "Kultur & Community", tagLifestyle: "Alltag", tagFinds: "Ausgewählte Fundstücke", followFacebook: "Der Geschichte folgen ↗",
+        socialEyebrow: "Baby Oku folgen", socialTitle: "Neues passiert immer irgendwo.",
+        socialIntro: "Auf ihren Kanälen gibt es neue Videos, Produktvorstellungen und Gespräche mit der Community.",
+        contactEyebrow: "Für Community & Markenpartner", contactTitle: "Lass uns gemeinsam etwas Schönes schaffen.",
+        contactText: "Bei Fragen zu Produkten, Kooperationen oder geschäftlichen Anliegen direkt Kontakt aufnehmen.",
+        footerLine: "Eine Konzeptvorschau, mit Sorgfalt gestaltet.", backTop: "Zurück zu den Fundstücken ↑", demoBadge: "KONZEPTVORSCHAU · KEINE BESTELLUNGEN"
+      }
+    };
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    document.querySelectorAll("[data-lang]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const language = button.dataset.lang;
+        document.documentElement.lang = language;
+        document.querySelectorAll("[data-lang]").forEach((item) => {
+          item.setAttribute("aria-pressed", String(item === button));
+        });
+        document.querySelectorAll("[data-i18n]").forEach((element) => {
+          const value = copy[language][element.dataset.i18n];
+          if (value) element.innerHTML = value;
+        });
+      });
+    });
+
+    document.querySelectorAll("[data-filter]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const category = button.dataset.filter;
+        document.querySelectorAll("[data-filter]").forEach((item) => {
+          item.setAttribute("aria-pressed", String(item === button));
+        });
+        document.querySelectorAll(".product").forEach((card) => {
+          card.hidden = category !== "all" && card.dataset.category !== category;
+        });
+      });
+    });
+  </script>
+</body>
+</html>
